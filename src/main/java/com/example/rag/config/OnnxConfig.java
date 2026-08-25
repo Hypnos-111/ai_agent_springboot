@@ -1,6 +1,9 @@
 package com.example.rag.config;
 
-import java.beans.JavaBean;
+import ai.onnxruntime.OrtEnvironment;
+import ai.onnxruntime.OrtSession;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OnnxConfig {

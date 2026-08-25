@@ -1,9 +1,15 @@
 package com.example.rag.state;
 
-import javax.swing.text.Document;
+import org.bsc.langgraph4j.state.Channel;
+import org.bsc.langgraph4j.state.Channels;
+import org.springframework.ai.document.Document;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static java.util.Map.entry;
 
 public class RagState extends org.bsc.langgraph4j.state.AgentState {
 
@@ -18,17 +24,17 @@ public class RagState extends org.bsc.langgraph4j.state.AgentState {
     public static final String TOOL_RESULT = "toolResult";
     public static final String TOOL_ARGUMENTS = "toolArguments";
 
-    public static final Map<String, Channel<?>> SCHEMA = Map.of(
-            QUESTION, Channels.base(() -> ""),
-            DEPARTMENT, Channels.base(() -> ""),
-            REWRITTEN_QUERY, Channels.base(() -> ""),
-            RECALL_DOCS, Channels.base(ArrayList::new),
-            RERANK_DOCS, Channels.base(ArrayList::new),
-            COMPRESSED_CONTEXT, Channels.base(() -> ""),
-            TOOL_NAME, Channels.base(() -> ""),
-            TOOL_RESULT, Channels.base(() -> ""),
-            TOOL_ARGUMENTS, Channels.base(() -> new HashMap<String, Object>()),
-            ANSWER, Channels.base(() -> "")
+    public static final Map<String, Channel<?>> SCHEMA = Map.ofEntries(
+            entry(QUESTION, Channels.base(() -> "")),
+            entry(DEPARTMENT, Channels.base(() -> "")),
+            entry(REWRITTEN_QUERY, Channels.base(() -> "")),
+            entry(RECALL_DOCS, Channels.base(ArrayList::new)),
+            entry(RERANK_DOCS, Channels.base(ArrayList::new)),
+            entry(COMPRESSED_CONTEXT, Channels.base(() -> "")),
+            entry(TOOL_NAME, Channels.base(() -> "")),
+            entry(TOOL_RESULT, Channels.base(() -> "")),
+            entry(TOOL_ARGUMENTS, Channels.base(() -> new HashMap<String, Object>())),
+            entry(ANSWER, Channels.base(() -> ""))
     );
 
     public RagState(Map<String, Object> map) {
@@ -37,17 +43,17 @@ public class RagState extends org.bsc.langgraph4j.state.AgentState {
 
     @SuppressWarnings("unchecked")
     public List<Document> recallDocs() {
-        return (List<Document>) value(RECALL_DOCS).orElse(List.of);
+        return (List<Document>) value(RECALL_DOCS).orElse(List.of());
     }
 
     @SuppressWarnings("unchecked")
     public List<Document> rerankDocs() {
-        return (List<Document>) value(RERANK_DOCS).orElse(List.of);
+        return (List<Document>) value(RERANK_DOCS).orElse(List.of());
     }
 
     @SuppressWarnings("unchecked")
     public Map<String, Object> toolArguments() {
-        return (Map<String, Object>) value(TOOL_ARGUMENTS).orElse(Map.of);
+        return (Map<String, Object>) value(TOOL_ARGUMENTS).orElse(Map.of());
     }
 
     public String question() {

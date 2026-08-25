@@ -1,6 +1,11 @@
 package com.example.rag.service;
 
-import com.example.rag.RagApplication;
+import com.example.rag.state.AgentState;
+import lombok.RequiredArgsConstructor;
+import org.bsc.langgraph4j.CompiledGraph;
+import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor

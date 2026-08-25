@@ -1,8 +1,12 @@
 package com.example.rag.service;
 
-import com.example.rag.RagApplication;
+import lombok.RequiredArgsConstructor;
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.document.Document;
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 
-import javax.swing.text.Document;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,7 +23,7 @@ public class RagChatService {
         return chatClient.prompt().system("").user(question).call().content();
     }
 
-    public String stream(String question, String department) {
+    public Flux<String> stream(String question, String department) {
         String context = buildContext(question, department);
 
         return chatClient.prompt().system("").user(question).stream().content();

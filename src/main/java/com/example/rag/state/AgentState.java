@@ -1,6 +1,8 @@
 package com.example.rag.state;
 
-import java.util.HashMap;
+import org.bsc.langgraph4j.state.Channel;
+import org.bsc.langgraph4j.state.Channels;
+
 import java.util.Map;
 
 public class AgentState extends org.bsc.langgraph4j.state.AgentState {

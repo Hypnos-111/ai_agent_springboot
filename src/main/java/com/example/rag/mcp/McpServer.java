@@ -1,9 +1,12 @@
 package com.example.rag.mcp;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
 import java.util.Map;
 
 @Component
-@RequiredArgsConstrutor
+@RequiredArgsConstructor
 public class McpServer {
 
     private final Map<String, ToolExecutor> tools;

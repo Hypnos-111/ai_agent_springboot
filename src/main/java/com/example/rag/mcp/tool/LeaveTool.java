@@ -1,12 +1,14 @@
 package com.example.rag.mcp.tool;
 
-import com.example.rag.service.JiraService;
+import com.example.rag.mcp.ToolExecutor;
 import com.example.rag.service.LeaveService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
 @Component("get_employee_leave")
-@RequiredArgsConstrutor
+@RequiredArgsConstructor
 public class LeaveTool implements ToolExecutor {
 
     private final LeaveService leaveService;

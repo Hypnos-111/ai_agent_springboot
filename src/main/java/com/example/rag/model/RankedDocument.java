@@ -1,6 +1,6 @@
 package com.example.rag.model;
 
-import javax.swing.text.Document;
+import org.springframework.ai.document.Document;
 
 public record RankedDocument(
         Document document,

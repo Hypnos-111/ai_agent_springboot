@@ -1,12 +1,15 @@
 package com.example.rag.mcp.tool;
 
-import com.example.rag.service.EmployeeService;
+import com.example.rag.mcp.ToolExecutor;
 import com.example.rag.state.RagState;
+import lombok.RequiredArgsConstructor;
+import org.bsc.langgraph4j.CompiledGraph;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
 @Component("search_hr_policy")
-@RequiredArgsConstrutor
+@RequiredArgsConstructor
 public class HrPolicyTool implements ToolExecutor {
 
     private final CompiledGraph<RagState> ragGraph;

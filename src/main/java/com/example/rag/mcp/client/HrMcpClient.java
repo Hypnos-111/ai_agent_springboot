@@ -1,9 +1,13 @@
 package com.example.rag.mcp.client;
 
-import java.io.IOException;
+import com.example.rag.mcp.McpServer;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 @Component
-@RequiredArgsConstrutor
+@RequiredArgsConstructor
 public class HrMcpClient {
 
     private final McpServer server;

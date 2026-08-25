@@ -1,6 +1,7 @@
 package com.example.rag.service;
 
-import java.io.IOException;
+import ai.djl.huggingface.tokenizers.HuggingFaceTokenizer;
+import org.springframework.stereotype.Component;
 
 @Component
 public class OnnxTokenizer {

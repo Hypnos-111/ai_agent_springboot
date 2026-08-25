@@ -1,6 +1,13 @@
 package com.example.rag.service;
 
-import javax.swing.text.Document;
+import ai.onnxruntime.OnnxTensor;
+import ai.onnxruntime.OrtEnvironment;
+import ai.onnxruntime.OrtSession;
+import com.example.rag.model.RankedDocument;
+import lombok.RequiredArgsConstructor;
+import org.springframework.ai.document.Document;
+import org.springframework.stereotype.Service;
+
 import java.util.*;
 
 @Service
@@ -13,13 +20,12 @@ public class BgeRerankerService {
     private final OnnxTokenizer tokenizer;
 
     public List<Document> rerank(String question, List<Document> docs)  {
-        if(dosc.isEmpty()) {
+        if (docs.isEmpty()) {
             return List.of();
         }
 
-        List<Float> scores = batchScore(question, docs) {
-            return finalRerank(docs, scores);
-        }
+        List<Float> scores = batchScore(question, docs);
+        return finalRerank(docs, scores);
     }
 
     private List<Float> batchScore(String query, List<Document> docs) {
@@ -33,8 +39,8 @@ public class BgeRerankerService {
                 maxLength = Math.max(maxLength, token.inputIds().length);
             }
 
-            logn[][] inputIds = new logn[docs.size()][maxLength];
-            logn[][] attentionMask = new logn[docs.size()][maxLength];
+            long[][] inputIds = new long[docs.size()][maxLength];
+            long[][] attentionMask = new long[docs.size()][maxLength];
 
             for(int i = 0; i < tokens.size(); i++) {
                 TokenResult token = tokens.get(i);

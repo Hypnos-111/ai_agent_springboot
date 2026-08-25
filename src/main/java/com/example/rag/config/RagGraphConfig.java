@@ -1,19 +1,21 @@
 package com.example.rag.config;
 
-import com.example.rag.mcp.client.EmployeeMcpClient;
-import com.example.rag.mcp.client.HrMcpClient;
-import com.example.rag.mcp.client.JiraMcpClient;
-import com.example.rag.mcp.client.LeaveMcpClient;
 import com.example.rag.service.*;
-import com.example.rag.state.AgentState;
 import com.example.rag.state.RagState;
+import lombok.RequiredArgsConstructor;
+import org.bsc.langgraph4j.CompiledGraph;
+import org.bsc.langgraph4j.StateGraph;
+import org.bsc.langgraph4j.action.AsyncNodeActionWithConfig;
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.document.Document;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-import javax.swing.text.Document;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
+
+import static org.bsc.langgraph4j.action.AsyncNodeActionWithConfig.node_async;
 
 @Configuration
 @RequiredArgsConstructor

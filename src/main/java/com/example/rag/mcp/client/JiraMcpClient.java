@@ -1,7 +1,13 @@
 package com.example.rag.mcp.client;
 
+import com.example.rag.mcp.McpServer;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.Map;
+
 @Component
-@RequiredArgsConstrutor
+@RequiredArgsConstructor
 public class JiraMcpClient {
 
     private final McpServer server;
